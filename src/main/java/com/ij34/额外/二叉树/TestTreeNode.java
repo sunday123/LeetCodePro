@@ -42,7 +42,14 @@ public class TestTreeNode {
 		System.out.println("高度");
 		System.out.println(util.treeDepth(root));
 		System.out.println("------------------------------------");
-
+		System.out.println("序列化二叉树");
+		System.out.println(util.Serialize(root));  //3,5,4,#,#,2,#,1,#,#,#,
+		System.out.println("------------------------------------");
+		String SerializeStr = "3,5,4,#,#,2,#,1,#,#,#,";
+		System.out.println("反序列化二叉树");
+		TreeNode SerializeNode = util.Deserialize(SerializeStr);
+		util.preOrder(SerializeNode);  
+		System.out.println("------------------------------------");
 	}
 
 }

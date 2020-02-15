@@ -167,6 +167,60 @@ public class TreeNodeUtil {
        }
 	}
 	
+	/*---------------------------------二叉树序列化---------------------------------*/
+	/**二叉树的序列化是指：把一棵二叉树按照某种遍历方式的结果以某种格式保存为字符串，从而使得内存中建立起来的二叉树可以持久保存
+	 *<br> 序列化时通过 某种符号表示空节点（#）*/
+	public String Serialize(TreeNode root) {
+		StringBuilder sb = new StringBuilder();
+		if(root == null){
+			sb.append("#,");
+			return sb.toString();
+		}
+		sb.append(root.val+",");
+		sb.append(Serialize(root.left));
+		sb.append(Serialize(root.right));
+		
+		return sb.toString();
+		
+	}
+	
+	/**二叉树的反序列化是指：根据某种遍历顺序得到的序列化字符串结果str，重构二叉树。*/
+	int IDeserialize = -1;//下标
+	public TreeNode Deserialize(String str) {
+		++IDeserialize;
+		if(IDeserialize >= str.length()) return null;
+		String[] strs = str.split(",");
+		TreeNode node = null;
+		if(!strs[IDeserialize].equals("#")){
+			node = new TreeNode(Integer.valueOf(strs[IDeserialize])); //不为空新建节点
+			node.left = Deserialize(str);
+			node.right = Deserialize(str);
+		}
+		
+		return node;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }
